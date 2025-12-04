@@ -1,5 +1,4 @@
 import { Box, Typography, IconButton, Avatar } from "@mui/material";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 type Props = {
