@@ -1,37 +1,56 @@
 import { Box, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   label: string;
   active?: boolean;
   arrow?: boolean;
   icon?: string;
+  to?: string;           
   onClick?: () => void;
 }
 
-export const SidebarItem = ({ label, active, arrow, icon, onClick }: Props) => {
+export const SidebarItem = ({
+  label,
+  active,
+  arrow,
+  icon,
+  to,
+  onClick,
+}: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (to) navigate(to); 
+    if (onClick) onClick();
+  };
+
   return (
     <Box
-      onClick={onClick}
+      onClick={handleClick}
       sx={{
         height: "44px",
         display: "flex",
         alignItems: "center",
         gap: "12px",
         position: "relative",
-        paddingX: "12px",
+        px: "12px",
         borderRadius: "8px",
         cursor: "pointer",
         background: active ? "#F8FAFC" : "transparent",
+        "&:hover": {
+          background: active ? "#F8FAFC" : "#F9FAFB",
+        },
       }}
     >
       {active && (
         <Box
           sx={{
-            width: "4px",
+            width: "5px",
             height: "22px",
             background: "#6366F1",
             position: "absolute",
-            left: 0,
+            left: -16,
             borderRadius: "2px",
           }}
         />
@@ -60,15 +79,10 @@ export const SidebarItem = ({ label, active, arrow, icon, onClick }: Props) => {
       </Typography>
 
       {arrow && (
-        <Typography sx={{ marginLeft: "auto", color: "#475569", fontSize: "18px" }}>
-          <img
+        <img
           src={"/src/assets/arrow_right.svg"}
-          style={{
-            width: 20,
-            height: 20,
-          }}
+          style={{ marginLeft: "auto", width: 20, height: 20 }}
         />
-        </Typography>
       )}
     </Box>
   );
