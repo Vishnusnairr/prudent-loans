@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 
 export const SidebarLogo = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "6px",height:"62px" ,paddingTop:"8px",borderBottom:"2px solid #c9caccff"}}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "6px",height:"62px" ,paddingBottom:"13px",borderBottom:"1px solid #E2E8F0"}}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <img 
           src={logo} 
