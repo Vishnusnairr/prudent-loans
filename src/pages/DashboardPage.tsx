@@ -32,7 +32,7 @@ export const DashboardPage = () => {
   const displayedLoans = seeAll ? filtered : filtered.slice(start, start + perPage);
 
   return (
-    <Box sx={{ width: "100%", p: "32px" }}>
+    <Box sx={{ width: "100%", }}>
 
       <Box sx={{ display: "flex", gap: "24px", mb: "32px", width: "100%" }}>
         <Box sx={{ width: "480px" }}><UploadBannerCard /></Box>
