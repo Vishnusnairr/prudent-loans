@@ -6,7 +6,8 @@ interface Props {
   active?: boolean;
   arrow?: boolean;
   icon?: string;
-  to?: string;           
+  to?: string;
+  badge?: number;
   onClick?: () => void;
 }
 
@@ -16,12 +17,13 @@ export const SidebarItem = ({
   arrow,
   icon,
   to,
+  badge,
   onClick,
 }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (to) navigate(to); 
+    if (to) navigate(to);
     if (onClick) onClick();
   };
 
@@ -38,11 +40,10 @@ export const SidebarItem = ({
         borderRadius: "8px",
         cursor: "pointer",
         background: active ? "#F8FAFC" : "transparent",
-        "&:hover": {
-          background: active ? "#F8FAFC" : "#F9FAFB",
-        },
+        "&:hover": { background: active ? "#F8FAFC" : "#F9FAFB" },
       }}
     >
+
       {active && (
         <Box
           sx={{
@@ -60,11 +61,7 @@ export const SidebarItem = ({
         <img
           src={icon}
           alt={label}
-          style={{
-            width: 20,
-            height: 20,
-            objectFit: "contain",
-          }}
+          style={{ width: 20, height: 20, objectFit: "contain" }}
         />
       )}
 
@@ -77,6 +74,25 @@ export const SidebarItem = ({
       >
         {label}
       </Typography>
+
+      {badge !== undefined && (
+        <Box
+          sx={{
+            ml: "auto",
+            background: "#EEF2FF",
+            color: "#4F46E5",
+            borderRadius: "8px",
+            px: "8px",
+            fontSize: "12px",
+            fontWeight: 600,
+            height: "22px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {badge}
+        </Box>
+      )}
 
       {arrow && (
         <img

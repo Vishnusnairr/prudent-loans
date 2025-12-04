@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
-import { useLocation } from "react-router-dom";
-
+import { useLocation, useNavigate } from "react-router-dom";
 import { SidebarLogo } from "../components/SidebarLogo";
 import { SidebarItem } from "../components/SidebarItem";
 import { ActiveTickets } from "../components/ActiveTickets";
@@ -9,39 +8,34 @@ import { PrudentLiteBox } from "../components/PrudentLiteBox";
 import { ProfileCard } from "../components/ProfileCard";
 
 export const Sidebar = () => {
-  const location = useLocation();
-  const pathname = location.pathname;
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const tickets = ["#PR013034", "#PR0130456"];
 
-  const menu = [
-    {
-      label: "Dashboard",
-      icon: "/src/assets/layout_grid_1.svg",
-      arrow: true,
-      to: "/",                
-    },
-    {
-      label: "Create New Loan",
-      icon: "/src/assets/layout_grid_2.svg",
-      to: "/create-loan",
-    },
-    {
-      label: "Analysed Loans",
-      icon: "/src/assets/layout_grid_3.svg",
-      to: "/analysed-loans",
-    },
-    {
-      label: "Requests",
-      icon: "/src/assets/layout_grid_4.svg",
-      to: "/requests",
-    },
-    {
-      label: "Documents",
-      icon: "/src/assets/layout_grid_5.svg",
-      to: "/documents",
-    },
+  const defaultMenu = [
+    { label: "Dashboard", icon: "/src/assets/layout_grid_1.svg", arrow: true, to: "/" },
+    { label: "Create New Loan", icon: "/src/assets/layout_grid_2.svg", to: "/create-loan" },
+    { label: "Analysed Loans", icon: "/src/assets/layout_grid_3.svg", to: "/analysed-loans" },
+    { label: "Requests", icon: "/src/assets/layout_grid_4.svg", to: "/requests" },
+    { label: "Documents", icon: "/src/assets/layout_grid_5.svg", to: "/documents" },
   ];
+
+  const secondaryMenu = [
+    { label: "Dashboard", icon: "/src/assets/layout_grid_1.svg", arrow: true, to: "/" },
+    { label: "Create New Loan", icon: "/src/assets/layout_grid_2.svg", to: "/create-loan" },
+    { label: "All Loans", icon: "/src/assets/layout_grid_3.svg", to: "/all-loans", badge: 2 },
+    { label: "My Pending Actions", icon: "/src/assets/layout_grid_4.svg", to: "/pending-actions", badge: 6 },
+    { label: "Pending by Prudent AI", icon: "/src/assets/layout_grid_5.svg", to: "/pending-ai", badge: 1 },
+  ];
+
+  const insideLoanFlow =
+    pathname.startsWith("/create-loan") ||
+    pathname.startsWith("/all-loans") ||
+    pathname.startsWith("/pending-actions") ||
+    pathname.startsWith("/pending-ai");
+
+  const menuToShow = insideLoanFlow ? secondaryMenu : defaultMenu;
 
   return (
     <Box
@@ -58,14 +52,15 @@ export const Sidebar = () => {
     >
       <SidebarLogo />
 
-      {menu.map((item) => (
+      {menuToShow.map((item) => (
         <SidebarItem
           key={item.label}
           label={item.label}
           icon={item.icon}
           arrow={item.arrow}
-          to={item.to}
           active={pathname === item.to}
+          to={item.to}
+          badge={insideLoanFlow && item.badge ? item.badge : undefined}
         />
       ))}
 

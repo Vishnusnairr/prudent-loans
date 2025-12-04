@@ -25,7 +25,7 @@ export const AnalysedLoansPage = () => {
   const pageLoans = filtered.slice(start, start + perPage);
 
   return (
-    <Box sx={{ p: "32px", width: "100%" }}>
+    <Box sx={{  width: "100%" }}>
       <Typography
         fontSize="20px"
         fontWeight={600}
