@@ -12,11 +12,11 @@ export const Sidebar = () => {
 const tickets = ["#PR013034", "#PR0130456"];
 
   const menu = [
-    { label: "Dashboard", icon: "/assets/dashboard.png", arrow: true },
-    { label: "Create New Loan", icon: "/assets/create.png" },
-    { label: "Analysed Loans", icon: "/assets/analysed.png" },
-    { label: "Requests", icon: "/assets/requests.png" },
-    { label: "Documents", icon: "/assets/documents.png" },
+    { label: "Dashboard", icon: "/src/assets/layout_grid_1.svg", arrow: true },
+    { label: "Create New Loan", icon: "/src/assets/layout_grid_2.svg" },
+    { label: "Analysed Loans", icon: "/src/assets/layout_grid_3.svg" },
+    { label: "Requests", icon: "/src/assets/layout_grid_4.svg" },
+    { label: "Documents", icon: "/src/assets/layout_grid_5.svg" },
   ];
 
   return (
@@ -47,7 +47,7 @@ const tickets = ["#PR013034", "#PR0130456"];
 
       <ActiveTickets
   tickets={tickets}
-  icon="/assets/ticket.png" 
+  icon="/src/assets/Key_Icons.svg" 
 />
 <NeedSupportCard />
 <PrudentLiteBox />

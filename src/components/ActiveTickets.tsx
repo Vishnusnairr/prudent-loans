@@ -33,10 +33,6 @@ export const ActiveTickets = ({ tickets, icon }: TicketProps) => {
         >
           <Box
             sx={{
-              width: "32px",
-              height: "32px",
-              borderRadius: "50%",
-              border: "1px solid #E2E8F0",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -45,7 +41,7 @@ export const ActiveTickets = ({ tickets, icon }: TicketProps) => {
             <img
               src={icon}
               alt="ticket"
-              style={{ width: 18, height: 18, opacity: 0.7 }}
+              style={{ width: 32, height: 32, opacity: 0.7 }}
             />
           </Box>
 

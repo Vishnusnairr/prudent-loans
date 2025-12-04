@@ -52,8 +52,8 @@ export const SidebarItem = ({ label, active, arrow, icon, onClick }: Props) => {
       <Typography
         sx={{
           fontSize: "16px",
-          color: active ? "#0F172A" : "#475569",
-          fontWeight: active ? 600 : 500,
+          color: active ? "#0E121B" : "#525866",
+          fontWeight: active ? 500 : 400,
         }}
       >
         {label}
@@ -61,7 +61,13 @@ export const SidebarItem = ({ label, active, arrow, icon, onClick }: Props) => {
 
       {arrow && (
         <Typography sx={{ marginLeft: "auto", color: "#475569", fontSize: "18px" }}>
-          &gt;
+          <img
+          src={"/src/assets/arrow_right.svg"}
+          style={{
+            width: 20,
+            height: 20,
+          }}
+        />
         </Typography>
       )}
     </Box>
