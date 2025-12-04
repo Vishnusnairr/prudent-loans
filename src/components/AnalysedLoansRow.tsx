@@ -66,7 +66,6 @@ export const AnalysedLoansRow = ({
         gridTemplateColumns: "2.5fr 1fr 1fr 1.3fr 1.3fr 40px",
         alignItems: "center",
         px: "24px",
-        borderBottom: "1px solid #E2E8F0",
       }}
     >
 
