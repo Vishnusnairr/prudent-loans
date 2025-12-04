@@ -16,7 +16,7 @@ export const LoanStatsCard = () => {
         boxSizing: "border-box",
       }}
     >
-      <Box>
+      <Box sx={{display:"flex",flexDirection:"column-reverse"}}>
         <Typography
           fontSize="14px"
           fontWeight={400}
@@ -27,7 +27,7 @@ export const LoanStatsCard = () => {
 
         <Typography
           fontSize="28px"
-          fontWeight={600}
+          fontWeight={400}
           color="#0F172A"
           mt="4px"
         >
