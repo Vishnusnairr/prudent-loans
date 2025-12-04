@@ -17,19 +17,28 @@ import { NoOfLoansCard } from "../components/NoOfLoansCard";
 import { AnalysedLoansHeader } from "../components/AnalysedLoansHeader";
 import { AnalysedLoansColumnHeader } from "../components/AnalysedLoansColumnHeader";
 import { AnalysedLoansRow } from "../components/AnalysedLoansRow";
+import { Pagination } from "../components/Pagination";
 
 import { useLoans } from "../hooks/useLoans";
 import type { StatusType } from "../data/loanData";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 export const DashboardPage = () => {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<StatusType | "All">("All");
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(5); 
+
   const { data: loans = [], isLoading, isError } = useLoans(search);
 
-  const filtered = loans.filter((loan) =>
-    statusFilter === "All" ? true : loan.status === statusFilter
-  );
+  const filtered = useMemo(() => {
+    return statusFilter === "All"
+      ? loans
+      : loans.filter((l) => l.status === statusFilter);
+  }, [loans, statusFilter]);
+
+  const start = (page - 1) * perPage;
+  const pageLoans = filtered.slice(start, start + perPage);
 
   return (
     <Box sx={{ width: "100%", p: "32px", boxSizing: "border-box" }}>
@@ -38,6 +47,7 @@ export const DashboardPage = () => {
         <Box sx={{ width: "500px" }}><LoanStatsCard /></Box>
         <Box sx={{ width: "280px" }}><NoOfLoansCard /></Box>
       </Box>
+
       <Box
         sx={{
           background: "#FFFFFF",
@@ -74,26 +84,27 @@ export const DashboardPage = () => {
                 variant="standard"
                 placeholder="Search loans..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setPage(1);
+                }}
                 InputProps={{ disableUnderline: true, style: { fontSize: 14 } }}
                 fullWidth
               />
             </Box>
 
-            <IconButton
-              sx={{
-                width: 40, height: 40,
-                border: "1px solid #E2E8F0", borderRadius: "8px",
-              }}
-            >
-              <TuneIcon />
+            <IconButton sx={{ width: 40, height: 40, border: "1px solid #E2E8F0" }}>
+              <TuneIcon sx={{ fontSize: 20, color: "#64748B" }} />
             </IconButton>
 
             <Select
               size="small"
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value as any)}
-              sx={{ height: 40, borderRadius: "8px" }}
+              onChange={(e) => {
+                setStatusFilter(e.target.value as StatusType | "All");
+                setPage(1);
+              }}
+              sx={{ height: 40, borderRadius: "8px", fontSize: "14px" }}
             >
               <MenuItem value="All">All Status</MenuItem>
               <MenuItem value="Proceed with Caution">Proceed with caution</MenuItem>
@@ -106,6 +117,7 @@ export const DashboardPage = () => {
         <Divider sx={{ borderColor: "#E2E8F0" }} />
 
         <AnalysedLoansColumnHeader />
+
         <Divider sx={{ borderColor: "#E2E8F0" }} />
 
         {isLoading && (
@@ -114,12 +126,24 @@ export const DashboardPage = () => {
           </Box>
         )}
 
-        {isError && <Typography textAlign="center">Error loading</Typography>}
+        {isError && (
+          <Typography py={3} textAlign="center" color="error">
+            Failed to load loans.
+          </Typography>
+        )}
 
         {!isLoading &&
-          filtered.map((loan) => (
+          pageLoans.map((loan) => (
             <AnalysedLoansRow key={loan.id} {...loan} />
           ))}
+
+        <Pagination
+          total={filtered.length}
+          perPage={perPage}
+          page={page}
+          setPage={setPage}
+          setPerPage={setPerPage}   
+        />
       </Box>
     </Box>
   );

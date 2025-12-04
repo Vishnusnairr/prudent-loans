@@ -6,12 +6,12 @@ export type StatusType =
 export type ButtonType = "details" | "detailsRed" | "analysis";
 
 export interface LoanRowData {
-  id: string;              
-  loanName: string;        
-  loanId: string;          
-  date: string;            
-  statementPeriod: number; 
-  qualifiedIncome: string; 
+  id: string;
+  loanName: string;
+  loanId: string;
+  date: string;
+  statementPeriod: number;
+  qualifiedIncome: string;
   status: StatusType;
   avatarColor: string;
   buttonType: ButtonType;
@@ -74,3 +74,17 @@ export const analysedLoansData: LoanRowData[] = [
     buttonType: "details",
   },
 ];
+
+const autoMockRows: LoanRowData[] = Array.from({ length: 20 }).map((_, i) => ({
+  id: `${99900 + i}`,
+  loanName: `Loan #${99900 + i}`,
+  loanId: `${8880 + i}`,
+  date: `02-${(i % 28) + 1}-2024`,
+  statementPeriod: [12, 24, 18, 8][i % 4],
+  qualifiedIncome: `$${2800 + i * 12}.00`,
+  status: ["Proceed with Caution", "Action Required", "Batch Processed"][i % 3] as StatusType,
+  avatarColor: ["#A78BFA", "#86EFAC", "#93C5FD", "#FDE68A", "#F99CA2"][i % 5],
+  buttonType: ["details", "detailsRed", "analysis"][i % 3] as ButtonType,
+}));
+
+analysedLoansData.push(...autoMockRows);
