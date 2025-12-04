@@ -1,4 +1,4 @@
-import { Box, Typography} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export const AnalysedLoansHeader = () => {
   return (
@@ -10,7 +10,13 @@ export const AnalysedLoansHeader = () => {
         justifyContent: "space-between",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <img
+          src="/src/assets/bard-line.svg"
+          alt="bar chart"
+          style={{ width: 20, height: 20 }}
+        />
+
         <Typography fontSize="16px" fontWeight={600} color="#0F172A">
           Analysed Loans
         </Typography>
