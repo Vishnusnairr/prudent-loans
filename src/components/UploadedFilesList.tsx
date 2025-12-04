@@ -14,7 +14,7 @@ export const UploadedFilesList = ({ files, setFiles }: Props) => {
   return (
     <Box mt={3}>
       {files.length > 0 && (
-        <Typography fontSize="14px" fontWeight={500} mb={1}>
+        <Typography fontSize="14px" fontWeight={500} mb={1} color="#0E121B">
           Selected files to upload
         </Typography>
       )}

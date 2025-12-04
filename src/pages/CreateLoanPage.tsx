@@ -23,7 +23,7 @@ export const CreateLoanPage = () => {
           mt: "20px",
           display: "flex",
           flexDirection: "column",
-          gap: "32px",
+          gap: "20px",
         }}
       >
         <CreateLoanForm />

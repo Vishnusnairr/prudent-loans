@@ -2,18 +2,33 @@ import { Box, TextField, Typography, Select, MenuItem } from "@mui/material";
 
 export const CreateLoanForm = () => {
   return (
-    <Box sx={{ display: "flex", gap: "24px", width: "100%" }}>
-      <Box sx={{ flex: 1 }}>
+    <Box sx={{ display: "flex", gap: "24px", width: "100%",marginBottom:"30px"}}>
+      <Box sx={{ flex: 1}}>
         <Typography fontSize="14px" fontWeight={500} color="#475569" mb="6px">
           Loan Name*
         </Typography>
-        <TextField
-          fullWidth
-          placeholder="eg: Loan name #1234"
-          sx={{
-            "& fieldset": { borderRadius: "8px", borderColor: "#CBD5E1" },
-          }}
-        />
+       <TextField
+  fullWidth
+  placeholder="eg: Loan name #1234"
+  sx={{
+    height: "40px",
+    "& .MuiInputBase-root": {
+      height: "40px",
+      borderRadius: "8px",
+    },
+    "& fieldset": {
+      borderRadius: "8px",
+      borderColor: "#CBD5E1",
+      height: "40px",
+    },
+    input: {
+      padding: "0 12px",
+      fontSize: "14px",
+      color: "#0F172A",
+    },
+  }}
+/>
+
       </Box>
 
       <Box sx={{ width: "260px" }}>
@@ -35,7 +50,27 @@ export const CreateLoanForm = () => {
         <Typography fontSize="14px" fontWeight={500} color="#475569" mb="6px">
           Additional Comments
         </Typography>
-        <TextField fullWidth placeholder="Add notes" />
+       <TextField
+  fullWidth
+  placeholder="Add notes"
+  sx={{
+    height: "40px",
+    "& .MuiInputBase-root": {
+      height: "40px",
+      borderRadius: "8px",
+    },
+    "& fieldset": {
+      borderRadius: "8px",
+      borderColor: "#CBD5E1",
+    },
+    input: {
+      padding: "0 12px",
+      fontSize: "14px",
+      color: "#0F172A",
+    },
+  }}
+/>
+
       </Box>
     </Box>
   );
