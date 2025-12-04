@@ -10,13 +10,15 @@ export const ProfileCard = () => {
         gap: 2,
         cursor: "pointer",
         p: 1,
+        borderTop:"1px solid #E2E8F0",
+        paddingTop:"25px"
       }}
     >
-      <Avatar src="/assets/user.png" sx={{ width: 40, height: 40 }} />
+      <Avatar src="/src/assets/Avatar.svg" sx={{ width: 40, height: 40 }} />
 
       <Box>
-        <Typography sx={{ fontSize: 15, fontWeight: 600, color: "#0F172A" }}>
-          Robert Greene <span style={{ color: "#4F46E5" }}>✔</span>
+        <Typography sx={{ fontSize: 15, fontWeight: 600, color: "#0F172A",display:"flex" }}>
+          Robert Greene <span style={{ color: "#4F46E5" }}><img src="/src/assets/verified-fill.svg"/></span>
         </Typography>
         <Typography sx={{ fontSize: 13, color: "#64748B" }}>
           robert@yourorg.com

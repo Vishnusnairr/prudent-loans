@@ -20,11 +20,12 @@ export const NeedSupportCard = () => {
         display: "flex",
         flexDirection: "column",
         gap: "6px",
+        marginTop:"60px"
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-           <span style={{ fontSize: "18px" }}>🎧</span> 
+        <Box sx={{ display: "flex", alignItems: "unset", gap: "8px",justifyContent:"center" }}>
+           <span style={{ fontSize: "18px" }}><img src="/src/assets/customer-service.svg" /></span> 
           <Typography sx={{ fontSize: "15px", fontWeight: 600, color: "#0F172A" }}>
             Need Support
           </Typography>
