@@ -35,15 +35,15 @@ export const Pagination = ({
           gap: { xs: "16px", lg: 0 },
           px: "19px",
           py: "18px",
+          borderRadius:"10px",
           background: "#FFFFFF",
-          width: "100%",
         }}
       >
         <Typography
           fontSize="14px"
           fontWeight={500}
           color="#64748B"
-          sx={{ textAlign: { xs: "center", lg: "left" }, width: { xs: "100%", lg: "auto" } }}
+          sx={{ textAlign: { xs: "center", lg: "left" }, width: { xs: "100%", lg: "auto" } ,whiteSpace: "nowrap",}}
         >
           Page {page} of {totalPages}
         </Typography>
