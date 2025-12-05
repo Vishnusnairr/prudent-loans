@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { SidebarLogo } from "../components/SidebarLogo";
 import { SidebarItem } from "../components/SidebarItem";
 import { ActiveTickets } from "../components/ActiveTickets";
@@ -17,16 +17,34 @@ export const Sidebar = ({ onClose }: SidebarProps) => {
   const tickets = ["#PR013034", "#PR0130456"];
 
   const defaultMenu = [
-    { label: "Dashboard", icon: "/src/assets/layout_grid_1.svg", arrow: true, to: "/", badge: undefined },
-    { label: "Create New Loan", icon: "/src/assets/layout_grid_2.svg", to: "/create-loan", badge: undefined },
+    {
+      label: "Dashboard",
+      icon: pathname === "/" ?  "/src/assets/layout_grid_1.svg" : "/src/assets/layout-grid-line (1).svg" ,
+      arrow: true,
+      to: "/",
+      badge: undefined,
+    },{
+      label: "Create New Loan",
+      icon: pathname === "/create-loan" ? "/src/assets/draft-line.svg" : "/src/assets/layout_grid_2.svg",
+      to: "/create-loan",
+    },
     { label: "Analysed Loans", icon: "/src/assets/layout_grid_3.svg", to: "/analysed-loans", badge: undefined },
     { label: "Requests", icon: "/src/assets/layout_grid_4.svg", to: "/requests", badge: undefined },
     { label: "Documents", icon: "/src/assets/layout_grid_5.svg", to: "/documents", badge: undefined },
   ];
 
   const secondaryMenu = [
-    { label: "Dashboard", icon: "/src/assets/layout_grid_1.svg", arrow: true, to: "/", badge: undefined },
-    { label: "Create New Loan", icon: "/src/assets/layout_grid_2.svg", to: "/create-loan", badge: undefined },
+    {
+      label: "Dashboard",
+      icon: pathname === "/" ?   "/src/assets/layout_grid_1.svg" : "/src/assets/layout-grid-line (1).svg" ,
+      arrow: true,
+      to: "/",
+      badge: undefined,
+    }, {
+      label: "Create New Loan",
+      icon: pathname === "/create-loan" ? "/src/assets/draft-line.svg" : "/src/assets/layout_grid_2.svg",
+      to: "/create-loan",
+    },
     { label: "All Loans", icon: "/src/assets/layout_grid_3.svg", to: "/all-loans", badge: 2 },
     { label: "My Pending Actions", icon: "/src/assets/layout_grid_4.svg", to: "/pending-actions", badge: 6 },
     { label: "Pending by Prudent AI", icon: "/src/assets/layout_grid_5.svg", to: "/pending-ai", badge: 1 },
