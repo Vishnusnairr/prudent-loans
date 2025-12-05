@@ -19,8 +19,7 @@ export const NeedSupportCard = () => {
         boxSizing: "border-box",
         display: "flex",
         flexDirection: "column",
-        gap: "6px",
-        marginTop:"60px"
+        gap: "6px"
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

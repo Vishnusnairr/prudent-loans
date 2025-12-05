@@ -41,33 +41,36 @@ export const Sidebar = () => {
     <Box
       sx={{
         width: "272px",
-        height: "100vh",
         background: "#FFFFFF",
         borderRight: "1px solid #E2E8F0",
         p: "16px",
         display: "flex",
         flexDirection: "column",
-        gap: "8px",
       }}
     >
-      <SidebarLogo />
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "8px", flexGrow: 1 }}>
+        <SidebarLogo />
 
-      {menuToShow.map((item) => (
-        <SidebarItem
-          key={item.label}
-          label={item.label}
-          icon={item.icon}
-          arrow={item.arrow}
-          active={pathname === item.to}
-          to={item.to}
-          badge={insideLoanFlow && item.badge ? item.badge : undefined}
-        />
-      ))}
+        {menuToShow.map((item) => (
+          <SidebarItem
+            key={item.label}
+            label={item.label}
+            icon={item.icon}
+            arrow={item.arrow}
+            active={pathname === item.to}
+            to={item.to}
+            badge={insideLoanFlow && item.badge ? item.badge : undefined}
+          />
+        ))}
 
-      <ActiveTickets tickets={tickets} icon="/src/assets/Key_Icons.svg" />
-      <NeedSupportCard />
-      <PrudentLiteBox />
-      <ProfileCard />
+        <ActiveTickets tickets={tickets} icon="/src/assets/Key_Icons.svg" />
+      </Box>
+
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "12px", mt: "auto" }}>
+        <NeedSupportCard />
+        <PrudentLiteBox />
+        <ProfileCard />
+      </Box>
     </Box>
   );
 };
