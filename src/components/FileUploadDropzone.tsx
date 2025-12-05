@@ -63,7 +63,7 @@ export const FileUploadDropzone = ({ files, setFiles }: Props) => {
         cursor: "pointer",
       }}
     >
-      <img src="/src/assets/upload-cloud-2-line.svg" />
+      <img src="/upload-cloud-2-line.svg" />
       <Typography fontSize="14px" color="#475569">
         Choose bank statements, tax forms or drag & drop here.
       </Typography>

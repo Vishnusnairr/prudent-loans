@@ -35,7 +35,7 @@ export const CreateLoanFooter = ({ onCreate }: Props) => (
   }}
 >
   <img
-    src="/src/assets/file-upload-line.svg" 
+    src="/file-upload-line.svg" 
     alt="upload-icon"
     width={20}
     height={20}

@@ -39,7 +39,7 @@ export const GreetingHeader = () => {
         }}
       >
         <img
-          src="/src/assets/flashlight-line.svg"
+          src="/flashlight-line.svg"
           alt="quick-icon"
           width={20}
           height={20}
@@ -47,7 +47,7 @@ export const GreetingHeader = () => {
         />
 
         <img
-          src="/src/assets/notification-3-line.svg"
+          src="/notification-3-line.svg"
           alt="notification-icon"
           width={20}
           height={20}

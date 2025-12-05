@@ -19,14 +19,14 @@ export const ProfileCard = () => {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-        <Avatar src="/src/assets/Avatar.svg" sx={{ width: 40, height: 40 }} />
+        <Avatar src="/Avatar.svg" sx={{ width: 40, height: 40 }} />
 
         <Box>
           <Typography
             sx={{ fontSize: 15, fontWeight: 600, color: "#0F172A", display: "flex", alignItems: "center", gap: "4px" }}
           >
             Robert Greene
-            <img src="/src/assets/verified-fill.svg" />
+            <img src="/verified-fill.svg" />
           </Typography>
 
           <Typography sx={{ fontSize: 13, color: "#64748B" }}>
@@ -35,7 +35,7 @@ export const ProfileCard = () => {
         </Box>
       </Box>
 
-      <img src="/src/assets/arrow_right.svg" style={{ width: 20, height: 20 }} />
+      <img src="/arrow_right.svg" style={{ width: 20, height: 20 }} />
     </Box>
   );
 };

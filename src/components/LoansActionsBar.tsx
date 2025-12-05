@@ -103,7 +103,7 @@ export const LoansActionsBar = ({
           }}
           renderValue={() => (
             <Box sx={{ display: "flex", gap: "6px", alignItems: "center" }}>
-              <img src="/src/assets/filter-line.svg" alt="filter" />
+              <img src="/filter-line.svg" alt="filter" />
               <span>Filter</span>
             </Box>
           )}

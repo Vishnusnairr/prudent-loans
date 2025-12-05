@@ -46,7 +46,7 @@ export const UploadingModal = ({ open, secondsLeft, onCancel }: Props) => {
           }}
         >
           <img
-            src="/src/assets/upload.svg"
+            src="/upload.svg"
             style={{ width: "40px", height: "40px", margin: "auto" }}
           />
 

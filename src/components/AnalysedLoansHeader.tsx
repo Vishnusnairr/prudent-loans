@@ -26,7 +26,7 @@ export const AnalysedLoansHeader = () => {
         }}
       >
         <img
-          src="/src/assets/bard-line.svg"
+          src="/bard-line.svg"
           alt="bar chart"
           style={{
             width: isMobile ? 18 : 20,

@@ -37,7 +37,7 @@ export const UploadBannerCard = () => {
         }}
         onClick={() => navigate("/create-loan")}
       >
-        Create New Loan &nbsp; <img src="/src/assets/arrow-right-fill.svg" />
+        Create New Loan &nbsp; <img src="/arrow-right-fill.svg" />
       </Button>
 
       <img

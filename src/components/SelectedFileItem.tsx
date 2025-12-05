@@ -20,7 +20,7 @@ export const SelectedFileItem = ({ name, onDelete }: Props) => {
         
       }}
     >
-      <Avatar src="/src/assets/File_Format_Icons.svg" sx={{ width: 40, height: 40 }} />
+      <Avatar src="/File_Format_Icons.svg" sx={{ width: 40, height: 40 }} />
       <Typography fontSize="14px" color="#000" noWrap maxWidth="160px">{name}</Typography>
       <IconButton size="small" onClick={onDelete}>
         <DeleteIcon sx={{ fontSize: 18 }} />

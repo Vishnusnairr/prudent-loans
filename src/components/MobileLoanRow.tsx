@@ -23,7 +23,7 @@ export const MobileLoanRow = (props: Props) => {
   const renderIcon = () => {
     switch (buttonType) {
       case "analysis":
-        return <img src="/src/assets/bard-fill-w.svg" />;
+        return <img src="/bard-fill-w.svg" />;
       case "detailsRed":
         return <InfoIcon sx={{ fontSize: 16, color: "#DC2626" }} />;
       default:

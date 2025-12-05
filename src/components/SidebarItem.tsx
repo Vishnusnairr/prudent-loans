@@ -96,7 +96,7 @@ export const SidebarItem = ({
 
       {arrow && (
         <img
-          src={"/src/assets/arrow_right.svg"}
+          src={"/arrow_right.svg"}
           style={{ marginLeft: "auto", width: 20, height: 20 }}
         />
       )}
