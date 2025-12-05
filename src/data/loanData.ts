@@ -1,5 +1,5 @@
 export type StatusType =
-  | "Proceed with Caution"
+  | "Proceed with caution"
   | "Action Required"
   | "Batch Processed";
 
@@ -25,7 +25,7 @@ export const analysedLoansData: LoanRowData[] = [
     date: "10-15-2023",
     statementPeriod: 24,
     qualifiedIncome: "$3210.98",
-    status: "Proceed with Caution",
+    status: "Proceed with caution",
     avatarColor: "#A78BFA",
     buttonType: "details",
   },
@@ -69,7 +69,7 @@ export const analysedLoansData: LoanRowData[] = [
     date: "03-05-2024",
     statementPeriod: 15,
     qualifiedIncome: "$2800.75",
-    status: "Proceed with Caution",
+    status: "Proceed with caution",
     avatarColor: "#F99CA2",
     buttonType: "details",
   },
@@ -82,7 +82,7 @@ const autoMockRows: LoanRowData[] = Array.from({ length: 20 }).map((_, i) => ({
   date: `02-${(i % 28) + 1}-2024`,
   statementPeriod: [12, 24, 18, 8][i % 4],
   qualifiedIncome: `$${2800 + i * 12}.00`,
-  status: ["Proceed with Caution", "Action Required", "Batch Processed"][i % 3] as StatusType,
+  status: ["Proceed with caution", "Action Required", "Batch Processed"][i % 3] as StatusType,
   avatarColor: ["#A78BFA", "#86EFAC", "#93C5FD", "#FDE68A", "#F99CA2"][i % 5],
   buttonType: ["details", "detailsRed", "analysis"][i % 3] as ButtonType,
 }));

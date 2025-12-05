@@ -9,46 +9,56 @@ import { FileUploadDropzone } from "../components/FileUploadDropzone";
 import { UploadedFilesList } from "../components/UploadedFilesList";
 import { CreateLoanFooter } from "../components/CreateLoanFooter";
 import { UploadingModal } from "../components/UploadingModal";
+import { createLoan } from "../services/api";
 
 export const CreateLoanPage = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(10);
+  const [secondsLeft, setSecondsLeft] = useState(9);
+  const [isUploading, setIsUploading] = useState(false);
 
   const navigate = useNavigate();
 
-  const startUploading = () => {
+  const startUploading = async () => {
     if (files.length === 0) {
       toast.error("Please upload at least 1 file");
       return;
     }
-  const loanNameField = document.querySelector(
-    'input[placeholder="eg: Loan name #1234"]'
-  ) as HTMLInputElement;
+    const loanNameField = document.querySelector(
+      'input[placeholder="eg: Loan name #1234"]'
+    ) as HTMLInputElement;
 
-  if (!loanNameField?.value.trim()) {
-    toast.error("Loan name is required");
-    loanNameField.focus();
-    return;
-  }
-    setSecondsLeft(10);       
-    setShowModal(true);       
+    if (!loanNameField?.value.trim()) {
+      toast.error("Loan name is required");
+      loanNameField.focus();
+      return;
+    }
+    setSecondsLeft(9);
+    setShowModal(true);
+    setIsUploading(true);
+    try {
+      await createLoan({ files, loanName: loanNameField.value });
+      toast.success("Files uploaded successfully!");
+      setShowModal(false);
+      navigate("/analysed-loans");
+    } catch (error) {
+      toast.error("Upload failed");
+      setShowModal(false);
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const cancelUpload = () => {
     setShowModal(false);
+    setIsUploading(false);
     toast.error("Upload cancelled");
   };
 
   useEffect(() => {
-    if (!showModal) return;
+    if (!showModal || !isUploading) return;
 
     if (secondsLeft <= 1) {
-      setTimeout(() => {
-        toast.success("Files uploaded successfully!");
-        setShowModal(false);
-        navigate("/analysed-loans");
-      }, 500);
       return;
     }
 
@@ -57,7 +67,7 @@ export const CreateLoanPage = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [secondsLeft, showModal, navigate]);
+  }, [secondsLeft, showModal, isUploading]);
 
   return (
     <Box sx={{ width: "100%",  boxSizing: "border-box" }}>

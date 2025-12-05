@@ -1,6 +1,17 @@
 import { Box, Typography } from "@mui/material";
 
-export const LoanStatsCard = () => {
+interface LoanStatsCardProps {
+  totalLoans: number;
+  processed: number;
+  inProgress: number;
+  needsAttention: number;
+}
+
+export const LoanStatsCard = ({ totalLoans, processed, inProgress, needsAttention }: LoanStatsCardProps) => {
+  const processedPercent = totalLoans > 0 ? (processed / totalLoans) * 100 : 0;
+  const inProgressPercent = totalLoans > 0 ? (inProgress / totalLoans) * 100 : 0;
+  const needsAttentionPercent = totalLoans > 0 ? (needsAttention / totalLoans) * 100 : 0;
+
   return (
     <Box
       sx={{
@@ -30,7 +41,7 @@ export const LoanStatsCard = () => {
           color="#0F172A"
           mt="4px"
         >
-          710
+          {totalLoans}
         </Typography>
       </Box>
 
@@ -44,9 +55,9 @@ export const LoanStatsCard = () => {
             overflow: "hidden",
           }}
         >
-          <Box sx={{ width: "25%", background: "#7B61FF" }} />
-          <Box sx={{ width: "50%", background: "#FFCC32", mx: "3px" }} />
-          <Box sx={{ width: "25%", background: "#FF6B6B" }} />
+          <Box sx={{ width: `${processedPercent}%`, background: "#7B61FF" }} />
+          <Box sx={{ width: `${inProgressPercent}%`, background: "#FFCC32", mx: processedPercent > 0 && inProgressPercent > 0 ? "3px" : 0 }} />
+          <Box sx={{ width: `${needsAttentionPercent}%`, background: "#FF6B6B", ml: (processedPercent + inProgressPercent) > 0 ? "3px" : 0 }} />
         </Box>
 
         <Box
@@ -61,7 +72,7 @@ export const LoanStatsCard = () => {
             <Box display="flex" alignItems="center" gap="6px">
               <Box sx={{ width: 10, height: 10, borderRadius: "50%", background: "#7B61FF" }} />
               <Typography fontSize="22px" fontWeight={400} color="#0F172A">
-                125
+                {processed}
               </Typography>
             </Box>
             <Typography fontSize="14px" fontWeight={400} color="#6B7280">
@@ -73,14 +84,14 @@ export const LoanStatsCard = () => {
             <Box display="flex" alignItems="center" gap="6px">
               <Box sx={{ width: 10, height: 10, borderRadius: "50%", background: "#FFCC32" }} />
               <Typography fontSize="22px" fontWeight={400} color="#0F172A">
-                453
+                {inProgress}
               </Typography>
             </Box>
             <Typography fontSize="14px" fontWeight={400} color="#6B7280"   sx={{
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    maxWidth: "100%",  
+    maxWidth: "100%",
   }}>
               In Progress
             </Typography>
@@ -90,14 +101,14 @@ export const LoanStatsCard = () => {
             <Box display="flex" alignItems="center" gap="6px">
               <Box sx={{ width: 10, height: 10, borderRadius: "50%", background: "#FF6B6B" }} />
               <Typography fontSize="22px" fontWeight={400} color="#0F172A">
-                132
+                {needsAttention}
               </Typography>
             </Box>
             <Typography fontSize="14px" fontWeight={400} color="#6B7280" sx={{
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    maxWidth: "100%",  
+    maxWidth: "100%",
   }}>
               Needs attention
             </Typography>

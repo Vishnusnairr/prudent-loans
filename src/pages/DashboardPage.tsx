@@ -11,6 +11,7 @@ import { LoansActionsBar } from "../components/LoansActionsBar";
 
 import { useLoans } from "../hooks/useLoans";
 import type { StatusType } from "../data/loanData";
+import { analysedLoansData } from "../data/loanData";
 import { useState, useMemo } from "react";
 
 export const DashboardPage = () => {
@@ -22,6 +23,14 @@ export const DashboardPage = () => {
   const [perPage, setPerPage] = useState(5);
 
   const { data: loans = [], isLoading, isError } = useLoans(search);
+
+  const stats = useMemo(() => {
+    const totalLoans = analysedLoansData.length;
+    const processed = analysedLoansData.filter(l => l.status === "Batch Processed").length;
+    const inProgress = analysedLoansData.filter(l => l.status === "Action Required").length;
+    const needsAttention = analysedLoansData.filter(l => l.status === "Proceed with caution").length;
+    return { totalLoans, processed, inProgress, needsAttention };
+  }, []);
 
   const filtered = useMemo(() => {
     return statusFilter === "All"
@@ -49,7 +58,7 @@ export const DashboardPage = () => {
         </Box>
 
         <Box sx={{ maxWidth: { xs: "95vw", lg: "100%" }, width: "100%" }}>
-          <LoanStatsCard />
+          <LoanStatsCard {...stats} />
         </Box>
 
         <Box sx={{ maxWidth: { xs: "95vw", lg: "260px" }, width: "100%" }}>

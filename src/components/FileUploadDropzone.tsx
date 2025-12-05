@@ -1,11 +1,19 @@
 import { Box, Button, Typography } from "@mui/material";
+import toast from "react-hot-toast";
 
 type Props = { files: File[]; setFiles: (files: File[]) => void };
 
 export const FileUploadDropzone = ({ files, setFiles }: Props) => {
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-    setFiles([...files, ...Array.from(e.target.files)]);
+    const newFiles = Array.from(e.target.files);
+    const maxSize = 50 * 1024 * 1024; 
+    const invalidFiles = newFiles.filter(file => file.size > maxSize);
+    if (invalidFiles.length > 0) {
+      toast.error(`File size exceeds 50MB: ${invalidFiles.map(f => f.name).join(', ')}`);
+      return;
+    }
+    setFiles([...files, ...newFiles]);
   };
 
   return (

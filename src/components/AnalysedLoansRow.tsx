@@ -104,7 +104,7 @@ export const AnalysedLoansRow = (props: LoanRowProps) => {
             py: "4px",
           }}
         >
-          {status === "Proceed with Caution" && <WarningAmberIcon sx={{ fontSize: 16, color: "#DC6803", mr: 1 }} />}
+          {status === "Proceed with caution" && <WarningAmberIcon sx={{ fontSize: 16, color: "#DC6803", mr: 1 }} />}
           {status === "Action Required" && <ErrorOutlineIcon sx={{ fontSize: 16, color: "#D92D20", mr: 1 }} />}
           {status === "Batch Processed" && <CheckCircleIcon sx={{ fontSize: 16, color: "#039855", mr: 1 }} />}
 

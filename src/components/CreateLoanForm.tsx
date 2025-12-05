@@ -55,6 +55,7 @@ export const CreateLoanForm = () => {
         </Typography>
         <Select fullWidth size="small" defaultValue="12 months" sx={{ borderRadius: "8px" }}>
           <MenuItem value="12 months">12 months</MenuItem>
+          <MenuItem value="24 months">24 months</MenuItem>
           <MenuItem value="6 months">6 months</MenuItem>
         </Select>
       </Box>

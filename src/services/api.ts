@@ -18,3 +18,19 @@ export const getLoans = async (searchQuery = ""): Promise<LoanRowData[]> => {
   });
 };
 
+export const createLoan = async (payload: { files: File[]; loanName: string }): Promise<void> => {
+  await delay(9000); 
+  const newLoan: LoanRowData = {
+    id: `${Date.now()}`,
+    loanName: payload.loanName,
+    loanId: `${Date.now()}`,
+    date: new Date().toLocaleDateString(),
+    statementPeriod: 12,
+    qualifiedIncome: "$0.00",
+    status: "Batch Processed",
+    avatarColor: "#93C5FD",
+    buttonType: "analysis",
+  };
+  analysedLoansData.unshift(newLoan);
+};
+
