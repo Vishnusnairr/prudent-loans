@@ -1,5 +1,4 @@
 import { Box, Button, Typography } from "@mui/material";
-import UploadIcon from "@mui/icons-material/Upload";
 
 type Props = { files: File[]; setFiles: (files: File[]) => void };
 
@@ -23,16 +22,30 @@ export const FileUploadDropzone = ({ files, setFiles }: Props) => {
         textAlign: "center",
       }}
     >
-      <UploadIcon sx={{ fontSize: 32, color: "#475569" }} />
+      <img src="/src/assets/upload-cloud-2-line.svg" />
       <Typography fontSize="14px" color="#475569">
         Choose bank statements, tax forms or drag & drop here.
       </Typography>
       <Typography fontSize="12px" color="#64748B">PDF up to 50 MB.</Typography>
 
-      <Button variant="contained" sx={{ mt: 1 }} component="label">
-        Browse File
-        <input type="file" hidden multiple onChange={handleFileSelect} />
-      </Button>
+      <Button
+  variant="contained"
+  component="label"
+  sx={{
+    mt: 1,
+    textTransform: "none",
+    backgroundColor: "#FFFFFF",
+    color: "#0F172A",
+    border: "1px solid #CBD5E1",
+    "&:hover": {
+      backgroundColor: "#F8FAFC",
+      border: "1px solid #94A3B8",
+    },
+  }}
+>
+  Browse File
+  <input type="file" hidden multiple onChange={handleFileSelect} />
+</Button>
     </Box>
   );
 };

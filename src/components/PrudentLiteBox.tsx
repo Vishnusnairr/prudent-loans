@@ -11,18 +11,22 @@ export const PrudentLiteBox = () => {
         border: "1px solid #E2E8F0",
       }}
     >
-      <Typography sx={{ fontSize: 14, fontWeight: 600, color: "#0F172A", mb: .5 }}>
+      <Typography sx={{ fontSize: 14, fontWeight: 600, color: "#0F172A", mb: 0.5 }}>
         Still using Prudent AI Lite?
       </Typography>
+
       <Typography sx={{ fontSize: 13, color: "#475569", mb: 1 }}>
         You can do a lot more
       </Typography>
 
       <Typography
+        component="a"
+        href="mailto:admin@pudent.ai"
         sx={{
           fontSize: 14,
           fontWeight: 600,
           color: "#4F46E5",
+          textDecoration: "underline",
           cursor: "pointer",
         }}
       >

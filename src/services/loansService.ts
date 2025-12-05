@@ -1,4 +1,4 @@
-import type { LoanRowData, LoanQuery, LoanResponse } from "../types/LoanTypes";
+import type { LoanQuery, LoanResponse } from "../types/LoanTypes";
 import { analysedLoansData } from "../data/loanData";
 
 export const fetchLoans = async (query: LoanQuery): Promise<LoanResponse> => {

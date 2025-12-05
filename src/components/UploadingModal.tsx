@@ -1,6 +1,4 @@
-
-import { Box, Typography, Button, Modal } from "@mui/material";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { Box, Typography, Button } from "@mui/material";
 
 type Props = {
   open: boolean;
@@ -9,17 +7,22 @@ type Props = {
 };
 
 export const UploadingModal = ({ open, secondsLeft, onCancel }: Props) => {
+  if (!open) return null;
+
   return (
-    <Modal
-      open={open}
-      disableEscapeKeyDown
-      aria-labelledby="upload-modal"
+    <Box
       sx={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
         backdropFilter: "blur(6px)",
-        backgroundColor: "rgba(15, 23, 42, 0.3)",
+        background: "rgba(15, 23, 42, 0.45)",
+        zIndex: 2000,
         display: "flex",
-        justifyContent: "center",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <Box
@@ -27,64 +30,69 @@ export const UploadingModal = ({ open, secondsLeft, onCancel }: Props) => {
           width: "420px",
           background: "#FFFFFF",
           borderRadius: "16px",
-          textAlign: "center",
           p: "32px",
+          textAlign: "center",
+          boxShadow: "0px 4px 22px rgba(0,0,0,0.15)",
         }}
       >
-        <CloudUploadIcon sx={{ fontSize: 48, color: "#6366F1" }} />
+        <img
+          src="/src/assets/uploadcloud.svg"
+          style={{ width: "40px", height: "40px", margin: "auto" }}
+        />
 
-        <Typography
-          id="upload-modal"
-          fontSize="20px"
-          fontWeight={600}
-          mt={2}
-          sx={{ color: "#0F172A" }}
-        >
+        <Typography fontSize="18px" fontWeight={600} color="#0F172A" mt={2}>
           Uploading Files
         </Typography>
 
-        <Typography fontSize="14px" mt={1} sx={{ color: "#64748B" }}>
-          Your files are being uploaded. Don’t close this window.
-          You will be automatically reloaded once it is complete.
+        <Typography
+          mt={1}
+          fontSize="14px"
+          color="#475569"
+          lineHeight="20px"
+          sx={{ maxWidth: "290px", mx: "auto" }}
+        >
+          Your files are being uploaded. Don’t close this window. You will be
+          automatically redirected once it is complete
         </Typography>
+
+        <Box sx={{ borderBottom: "1px solid #E2E8F0", mt: "22px" }} />
 
         <Box
           sx={{
+            mt: "18px",
             display: "flex",
             justifyContent: "space-between",
-            mt: 4,
-            gap: 2,
+            gap: "12px",
           }}
         >
           <Button
-            fullWidth
-            variant="outlined"
             onClick={onCancel}
             sx={{
-              height: 40,
-              fontSize: "14px",
+              flex: 1,
+              border: "1px solid #E2E8F0",
+              borderRadius: "8px",
+              color: "#0F172A",
               textTransform: "none",
-              borderColor: "#E2E8F0",
-              color: "#1E293B",
             }}
           >
             Cancel Upload
           </Button>
 
           <Button
-            fullWidth
-            variant="contained"
+            disabled
             sx={{
-              height: 40,
-              fontSize: "14px",
-              textTransform: "none",
+              flex: 1,
+              borderRadius: "8px",
               background: "#6366F1",
+              textTransform: "none",
+              color: "#FFFFFF",
+              fontWeight: 500,
             }}
           >
             Wait for {secondsLeft} seconds
           </Button>
         </Box>
       </Box>
-    </Modal>
+    </Box>
   );
 };

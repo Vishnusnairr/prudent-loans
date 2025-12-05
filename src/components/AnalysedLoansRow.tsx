@@ -31,7 +31,7 @@ export const AnalysedLoansRow = ({
   const renderIcon = () => {
     switch (buttonType) {
       case "analysis":
-        return <StarIcon sx={{ fontSize: 16 }} />;
+        return <img src="/src/assets/bard-fill-w.svg" />;
       case "detailsRed":
         return <InfoIcon sx={{ fontSize: 16, color: "#DC2626" }} />;
       default:

@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import CreateIcon from "@mui/icons-material/Create";
 
 export const CreateLoanHeader = () => (
   <Box sx={{ mb: "24px" }}>

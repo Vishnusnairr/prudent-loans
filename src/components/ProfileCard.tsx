@@ -1,29 +1,42 @@
 import { Avatar, Box, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const ProfileCard = () => {
+  const navigate = useNavigate();
+
   return (
     <Box
+      onClick={() => navigate("/profile")}
       sx={{
         mt: 3,
         display: "flex",
         alignItems: "center",
-        gap: 2,
+        justifyContent: "space-between",
         cursor: "pointer",
         p: 1,
-        borderTop:"1px solid #E2E8F0",
-        paddingTop:"25px"
+        borderTop: "1px solid #E2E8F0",
+        paddingTop: "25px",
       }}
     >
-      <Avatar src="/src/assets/Avatar.svg" sx={{ width: 40, height: 40 }} />
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <Avatar src="/src/assets/Avatar.svg" sx={{ width: 40, height: 40 }} />
 
-      <Box>
-        <Typography sx={{ fontSize: 15, fontWeight: 600, color: "#0F172A",display:"flex" }}>
-          Robert Greene <span style={{ color: "#4F46E5" }}><img src="/src/assets/verified-fill.svg"/></span>
-        </Typography>
-        <Typography sx={{ fontSize: 13, color: "#64748B" }}>
-          robert@yourorg.com
-        </Typography>
+        <Box>
+          <Typography
+            sx={{ fontSize: 15, fontWeight: 600, color: "#0F172A", display: "flex", alignItems: "center", gap: "4px" }}
+          >
+            Robert Greene
+            <img src="/src/assets/verified-fill.svg" />
+          </Typography>
+
+          <Typography sx={{ fontSize: 13, color: "#64748B" }}>
+            robert@yourorg.com
+          </Typography>
+        </Box>
       </Box>
+
+      <img src="/src/assets/arrow_right.svg" style={{ width: 20, height: 20 }} />
     </Box>
   );
 };
+

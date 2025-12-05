@@ -1,6 +1,9 @@
 import { Box, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const UploadBannerCard = () => {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -13,7 +16,7 @@ export const UploadBannerCard = () => {
         justifyContent: "space-between",
         color: "white",
         position: "relative",
-        overflow: "hidden", 
+        overflow: "hidden",
       }}
     >
       <Typography fontSize={16} fontWeight={500} lineHeight="22px">
@@ -32,8 +35,9 @@ export const UploadBannerCard = () => {
           py: 1,
           "&:hover": { background: "#111" },
         }}
+        onClick={() => navigate("/create-loan")}
       >
-        Create New Loan →
+        Create New Loan &nbsp; <img src="/src/assets/arrow-right-fill.svg" />
       </Button>
 
       <img

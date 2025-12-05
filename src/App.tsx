@@ -8,6 +8,8 @@ import { RequestsPage } from "./pages/RequestsPage";
 import { DocumentsPage } from "./pages/DocumentsPage";
 import { AnalysedLoansPage } from "./pages/AnalysedLoansPage";
 import { CreateLoanPage } from "./pages/createLoanPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { NotificationsPage } from "./pages/notifications";
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
         <Route path="/pending-ai" element={<PendingByPrudentPage />} />
         <Route path="/requests" element={<RequestsPage />} />
         <Route path="/documents" element={<DocumentsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/notifications" element={<NotificationsPage/>}/>
       </Routes>
     </AppLayout>
   );
