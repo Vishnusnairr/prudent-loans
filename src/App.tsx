@@ -7,9 +7,9 @@ import { PendingByPrudentPage } from "./pages/PendingByPrudentPage";
 import { RequestsPage } from "./pages/RequestsPage";
 import { DocumentsPage } from "./pages/DocumentsPage";
 import { AnalysedLoansPage } from "./pages/AnalysedLoansPage";
-import { CreateLoanPage } from "./pages/createLoanPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { NotificationsPage } from "./pages/notifications";
+import { CreateLoanPage } from "./pages/CreateLoanPage";
 
 export default function App() {
   return (
