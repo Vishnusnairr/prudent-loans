@@ -109,7 +109,7 @@ export const LoansActionsBar = ({
           )}
         >
           <MenuItem value="All">All Status</MenuItem>
-          <MenuItem value="Proceed with Caution">Proceed with caution</MenuItem>
+          <MenuItem value="Proceed with caution">Proceed with caution</MenuItem>
           <MenuItem value="Action Required">Action Required</MenuItem>
           <MenuItem value="Batch Processed">Batch Processed</MenuItem>
         </Select>

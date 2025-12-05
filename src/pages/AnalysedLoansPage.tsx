@@ -7,13 +7,16 @@ import type { StatusType } from "../data/loanData";
 import { AnalysedLoansColumnHeader } from "../components/AnalysedLoansColumnHeader";
 import { AnalysedLoansRow } from "../components/AnalysedLoansRow";
 import { Pagination } from "../components/Pagination";
+import { LoansActionsBar } from "../components/LoansActionsBar";
 
 export const AnalysedLoansPage = () => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
   const [statusFilter, setStatusFilter] = useState<StatusType | "All">("All");
+  const [search, setSearch] = useState("");
+  const [seeAll, setSeeAll] = useState(false);
 
-  const { data: loans = [], isLoading, isError } = useLoans("");
+  const { data: loans = [], isLoading, isError } = useLoans(search);
 
   const filtered = useMemo(() => {
     return statusFilter === "All"
@@ -22,7 +25,7 @@ export const AnalysedLoansPage = () => {
   }, [loans, statusFilter]);
 
   const start = (page - 1) * perPage;
-  const pageLoans = filtered.slice(start, start + perPage);
+  const displayedLoans = seeAll ? filtered : filtered.slice(start, start + perPage);
 
   return (
     <Box sx={{  width: "100%" }}>
@@ -34,6 +37,16 @@ export const AnalysedLoansPage = () => {
       >
         Analysed Loans
       </Typography>
+
+      <LoansActionsBar
+        search={search}
+        setSearch={setSearch}
+        statusFilter={statusFilter}
+        setStatusFilter={setStatusFilter}
+        seeAll={seeAll}
+        setSeeAll={setSeeAll}
+        setPage={setPage}
+      />
 
       <Box
         sx={{
@@ -58,7 +71,7 @@ export const AnalysedLoansPage = () => {
         )}
 
         {!isLoading &&
-          pageLoans.map((loan) => (
+          displayedLoans.map((loan) => (
             <AnalysedLoansRow key={loan.id} {...loan} />
           ))}
 
