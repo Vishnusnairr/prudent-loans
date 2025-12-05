@@ -16,7 +16,8 @@ export const NoOfLoansCard = () => {
   return (
     <Box
       sx={{
-        height: "184px",
+        width: "100%",
+        height: { xs: "auto", md: "184px" },
         backgroundColor: "#FFFFFF",
         borderRadius: "12px",
         border: "1px solid #E2E8F0",
@@ -25,7 +26,7 @@ export const NoOfLoansCard = () => {
         justifyContent: "space-between",
       }}
     >
-      <Box sx={{ px: "20px", pt: "18px", pb: "14px" }}>
+      <Box sx={{ px: { xs: 2, md: "20px" }, pt: { xs: 1.5, md: "18px" }, pb: { xs: 1, md: "14px" } }}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box display="flex" alignItems="center" gap="6px">
             <BarChartIcon sx={{ fontSize: 18, color: "#0F172A" }} />

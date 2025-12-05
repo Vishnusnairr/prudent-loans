@@ -7,10 +7,10 @@ export const UploadBannerCard = () => {
   return (
     <Box
       sx={{
-        height: 137,
+        height: { xs: 120, md: 137 },
         borderRadius: "12px",
         background: "linear-gradient(135deg, #8b5cf6, #6366f1)",
-        p: 3,
+        p: { xs: 2, md: 3 },
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

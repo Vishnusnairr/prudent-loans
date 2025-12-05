@@ -19,7 +19,7 @@ export const CreateLoanForm = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", gap: "24px", width: "100%", marginBottom: "30px" }}>
+    <Box sx={{ display: "flex", gap: { xs: 2, md: "24px" }, width: "100%", marginBottom: "30px", flexDirection: { xs: "column", md: "row" } }}>
       <Box sx={{ flex: 1 }}>
         <Typography fontSize="14px" fontWeight={500} color="#475569" mb="6px">
           Loan Name*
@@ -49,7 +49,7 @@ export const CreateLoanForm = () => {
         />
       </Box>
 
-      <Box sx={{ width: "260px" }}>
+      <Box sx={{ flex: 1, minWidth: 0 }}>
         <Typography fontSize="14px" fontWeight={500} color="#475569" mb="6px">
           Income Period
         </Typography>

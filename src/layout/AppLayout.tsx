@@ -1,8 +1,17 @@
-import { Box } from "@mui/material";
+import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
+import { useState } from "react";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
   return (
     <Box
       sx={{
@@ -13,7 +22,22 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         bgcolor: "#F8FAFC",
       }}
     >
-      <Sidebar />
+      {!isMobile && <Sidebar />}
+
+      <Drawer
+        variant="temporary"
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, 
+        }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box" },
+        }}
+      >
+        <Sidebar onClose={handleDrawerToggle} />
+      </Drawer>
 
       <Box
         sx={{
@@ -23,7 +47,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
           height: "100%",
         }}
       >
-        <TopBar />
+        <TopBar onMenuClick={handleDrawerToggle} />
 
         <Box
           sx={{
@@ -31,7 +55,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
             overflowY: "auto",
             overflowX: "hidden",
             bgcolor: "#F8FAFC",
-            p: 3,
+            p: { xs: 1, md: 3 },
           }}
         >
           {children}
