@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import { SidebarLogo } from "../components/SidebarLogo";
 import { SidebarItem } from "../components/SidebarItem";
 import { ActiveTickets } from "../components/ActiveTickets";
@@ -13,7 +13,6 @@ interface SidebarProps {
 
 export const Sidebar = ({ onClose }: SidebarProps) => {
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   const tickets = ["#PR013034", "#PR0130456"];
 

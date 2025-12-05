@@ -1,4 +1,4 @@
-import { Box, TextField, Typography, MenuItem, Select, Button } from "@mui/material";
+import { Box, TextField,  MenuItem, Select, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import type { StatusType } from "../data/loanData";
 
