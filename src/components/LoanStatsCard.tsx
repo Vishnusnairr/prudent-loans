@@ -4,7 +4,6 @@ export const LoanStatsCard = () => {
   return (
     <Box
       sx={{
-        width: "500px",
         height: "184px",
         backgroundColor: "#FFFFFF",
         borderRadius: "12px",
@@ -77,7 +76,12 @@ export const LoanStatsCard = () => {
                 453
               </Typography>
             </Box>
-            <Typography fontSize="14px" fontWeight={400} color="#6B7280">
+            <Typography fontSize="14px" fontWeight={400} color="#6B7280"   sx={{
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "100%",  
+  }}>
               In Progress
             </Typography>
           </Box>
@@ -89,7 +93,12 @@ export const LoanStatsCard = () => {
                 132
               </Typography>
             </Box>
-            <Typography fontSize="14px" fontWeight={400} color="#6B7280">
+            <Typography fontSize="14px" fontWeight={400} color="#6B7280" sx={{
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "100%",  
+  }}>
               Needs attention
             </Typography>
           </Box>

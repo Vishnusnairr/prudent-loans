@@ -8,8 +8,11 @@ export const GreetingHeader = () => {
     <Box
       sx={{
         display: "flex",
-        alignItems: "center",
+        flexDirection: {  md: "row" },      
+        alignItems: { xs: "flex-start", md: "center" },
         width: "100%",
+        mt: { xs: 1.5, md: 0 },                          
+        gap: { xs: 1.5, md: 0 },
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
@@ -27,7 +30,14 @@ export const GreetingHeader = () => {
         </Typography>
       </Box>
 
-      <Box sx={{ display: "flex", alignItems: "center", gap: "14px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "14px",
+          mt: { xs: "10px", md: 0 },     
+        }}
+      >
         <img
           src="/src/assets/flashlight-line.svg"
           alt="quick-icon"

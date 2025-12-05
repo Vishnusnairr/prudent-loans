@@ -27,11 +27,11 @@ export const NoOfLoansCard = () => {
       }}
     >
       <Box sx={{ px: { xs: 2, md: "20px" }, pt: { xs: 1.5, md: "18px" }, pb: { xs: 1, md: "14px" } }}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center" >
           <Box display="flex" alignItems="center" gap="6px">
             <BarChartIcon sx={{ fontSize: 18, color: "#0F172A" }} />
             <Typography fontSize="14px" fontWeight="500" color="#0F172A">
-              No of Loans
+              No of Loans 
             </Typography>
           </Box>
 

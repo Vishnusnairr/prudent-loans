@@ -8,7 +8,7 @@ interface TopBarProps {
 
 export const TopBar = ({ onMenuClick }: TopBarProps) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down(800));
+  const isMobile = useMediaQuery(theme.breakpoints.down(1200));
 
   return (
     <Box

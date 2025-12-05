@@ -1,23 +1,45 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 export const AnalysedLoansHeader = () => {
+  const isMobile = useMediaQuery("(max-width:1200px)");
+
   return (
     <Box
       sx={{
-        padding: "16px 24px",
+        padding: { xs: "12px 16px", md: "16px 24px" },
         display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
+        flexDirection: { xs: "column", md: "row" }, 
+        alignItems: { xs: "flex-start", md: "center" },
+        justifyContent: { xs: "flex-start", md: "space-between" },
+        gap: { xs: "8px", md: 0 },
+        width: "100%",
+        boxSizing: "border-box",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "10px",
+          width: "100%",
+        }}
+      >
         <img
           src="/src/assets/bard-line.svg"
           alt="bar chart"
-          style={{ width: 20, height: 20 }}
+          style={{
+            width: isMobile ? 18 : 20,
+            height: isMobile ? 18 : 20,
+          }}
         />
 
-        <Typography fontSize="16px" fontWeight={600} color="#0F172A">
+        <Typography
+          fontSize={{ xs: "15px", md: "16px" }}
+          fontWeight={600}
+          color="#0F172A"
+          textAlign="left"
+        >
           Analysed Loans
         </Typography>
       </Box>

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down(1200));
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -19,7 +19,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
-        bgcolor: "#F8FAFC",
+        bgcolor: "#FFF",
       }}
     >
       {!isMobile && <Sidebar />}
@@ -54,7 +54,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
             flexGrow: 1,
             overflowY: "auto",
             overflowX: "hidden",
-            bgcolor: "#F8FAFC",
+            bgcolor: "#FFF",
             p: { xs: 1, md: 3 },
           }}
         >

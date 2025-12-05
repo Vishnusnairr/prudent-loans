@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography, useMediaQuery } from "@mui/material";
 
 import { UploadBannerCard } from "../components/UploadBannerCard";
 import { LoanStatsCard } from "../components/LoanStatsCard";
@@ -14,6 +14,7 @@ import type { StatusType } from "../data/loanData";
 import { useState, useMemo } from "react";
 
 export const DashboardPage = () => {
+  const isMobile = useMediaQuery("(max-width:1200px)");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<StatusType | "All">("All");
   const [page, setPage] = useState(1);
@@ -32,26 +33,53 @@ export const DashboardPage = () => {
   const displayedLoans = seeAll ? filtered : filtered.slice(start, start + perPage);
 
   return (
-    <Box sx={{ width: "100%", }}>
+    <Box sx={{ width: "100%" }}>
+      
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", lg: "row" },
+          gap: "24px",
+          mb: "32px",
+          width: "100%",
+        }}
+      >
+        <Box sx={{ maxWidth: { xs: "95vw", lg: "460px" }, width: "100%" }}>
+          <UploadBannerCard />
+        </Box>
 
-      <Box sx={{ display: "flex", gap: "24px", mb: "32px", width: "100%" }}>
-        <Box sx={{ width: "480px" }}><UploadBannerCard /></Box>
-        <Box sx={{ width: "500px" }}><LoanStatsCard /></Box>
-        <Box sx={{ width: "280px" }}><NoOfLoansCard /></Box>
+        <Box sx={{ maxWidth: { xs: "95vw", lg: "100%" }, width: "100%" }}>
+          <LoanStatsCard />
+        </Box>
+
+        <Box sx={{ maxWidth: { xs: "95vw", lg: "260px" }, width: "100%" }}>
+          <NoOfLoansCard />
+        </Box>
       </Box>
 
-      <Box sx={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "12px" }}>
+      <Box
+        sx={{
+          background: "#FFFFFF",
+          border: "1px solid #E2E8F0",
+          borderRadius: "12px",
+          maxWidth: "95vw",
+          width: "100%",
+        }}
+      >
 
         <Box
           sx={{
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: { xs: "flex-start", md: "center" },
+            gap: { xs: 2, md: 0 },
             px: "24px",
             py: "18px",
           }}
         >
           <AnalysedLoansHeader />
+
           <LoansActionsBar
             search={search}
             setSearch={setSearch}
@@ -63,7 +91,7 @@ export const DashboardPage = () => {
           />
         </Box>
 
-        <AnalysedLoansColumnHeader />
+        {!isMobile && <AnalysedLoansColumnHeader />}
 
         {isLoading && (
           <Box py={4} display="flex" justifyContent="center">
@@ -77,9 +105,17 @@ export const DashboardPage = () => {
           </Typography>
         )}
 
-        {!isLoading && displayedLoans.map((loan) => <AnalysedLoansRow key={loan.id} {...loan} />)}
+        {!isLoading && filtered.length === 0 && (
+          <Typography py={4} textAlign="center" color="#64748B" fontSize="14px">
+            No results found.
+          </Typography>
+        )}
 
-        {!seeAll && (
+        {!isLoading && displayedLoans.map((loan) => (
+          <AnalysedLoansRow key={loan.id} {...loan} />
+        ))}
+
+        {!seeAll && filtered.length > perPage && (
           <Pagination
             total={filtered.length}
             perPage={perPage}
