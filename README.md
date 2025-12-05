@@ -134,7 +134,7 @@ The application uses mocked API calls with simulated network latency:
 
 ## 🤝 Contributing
 
-This is a frontend assessment project. For any queries, please reach out to naresh@prudent.ai
+This is a frontend assessment project. For any queries, please reach out to vishnusnair225@gmail.com
 
 ## 📄 License
 
