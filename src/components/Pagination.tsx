@@ -29,18 +29,35 @@ export const Pagination = ({
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          flexDirection: { xs: "column", md: "column", lg: "row" },
+          justifyContent: { xs: "center", lg: "space-between" },
+          alignItems: { xs: "center", lg: "center" },
+          gap: { xs: "16px", lg: 0 },
           px: "19px",
           py: "18px",
           background: "#FFFFFF",
+          width: "100%",
         }}
       >
-        <Typography fontSize="14px" fontWeight={500} color="#64748B">
+        <Typography
+          fontSize="14px"
+          fontWeight={500}
+          color="#64748B"
+          sx={{ textAlign: { xs: "center", lg: "left" }, width: { xs: "100%", lg: "auto" } }}
+        >
           Page {page} of {totalPages}
         </Typography>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: "6px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            flexWrap: "wrap",
+            width: "100%",
+            justifyContent: "center",
+          }}
+        >
           <Box
             sx={{
               width: 36,
@@ -144,6 +161,8 @@ export const Pagination = ({
             fontSize: "13px",
             border: "1px solid #E2E8F0",
             ".MuiOutlinedInput-notchedOutline": { border: "none" },
+            width: { xs: "100%", lg: "auto" },
+            textAlign: "center",
           }}
         >
           <MenuItem value={5}>5 / page</MenuItem>
@@ -153,4 +172,4 @@ export const Pagination = ({
       </Box>
     </>
   );
-  };
+};
