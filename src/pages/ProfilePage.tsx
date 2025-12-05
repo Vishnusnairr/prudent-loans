@@ -12,7 +12,7 @@ export const ProfilePage = () => {
       </Typography>
 
       <Typography sx={{ fontSize: 16, color: "#334155", mb: 1 }}>
-        Email: robert@yourorg.com
+        Email: robert@gmail.com
       </Typography>
 
       <Typography sx={{ fontSize: 16, color: "#334155", mb: 1 }}>

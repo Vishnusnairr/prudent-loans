@@ -30,7 +30,7 @@ export const ProfileCard = () => {
           </Typography>
 
           <Typography sx={{ fontSize: 13, color: "#64748B" }}>
-            robert@yourorg.com
+            robert@gmail.com
           </Typography>
         </Box>
       </Box>
