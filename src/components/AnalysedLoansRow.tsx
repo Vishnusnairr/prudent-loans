@@ -67,14 +67,42 @@ export const AnalysedLoansRow = (props: LoanRowProps) => {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <Box
-          sx={{
-            width: "40px",
-            height: "40px",
-            borderRadius: "50%",
-            background: avatarColor,
-          }}
-        />
+     <Box
+      sx={{
+        width: "40px",
+        height: "40px",
+        borderRadius: "50%",
+        background: avatarColor,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+      }}
+    >
+      <Box
+        sx={{
+          width: "14px",
+          height: "14px",
+          borderRadius: "50%",
+          background: "#FFF",
+          position: "absolute",
+          top: "8px",
+        }}
+      />
+
+      <Box
+        sx={{
+          width: "30px",
+          height: "20px",
+          background: "#FFF",
+          borderRadius: "0 0 50px 50px",
+          position: "absolute",
+          bottom: "-5px",
+          transform: "rotate(180deg)", 
+          transformOrigin: "center",
+        }}
+      />
+    </Box>
         <Box>
           <Typography fontWeight={600} fontSize="14px" color="#0F172A">
             {loanName}
